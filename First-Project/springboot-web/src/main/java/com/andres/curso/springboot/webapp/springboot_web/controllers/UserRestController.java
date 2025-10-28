@@ -5,6 +5,10 @@ import java.util.HashMap;
 import java.util.Map;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.andres.curso.springboot.models.User;
+import com.andres.curso.springboot.models.dto.UserDto;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.stereotype.Controller;
@@ -16,13 +20,12 @@ import org.springframework.stereotype.Controller;
 public class UserRestController {
 
     @RequestMapping(path="/details",method = RequestMethod.GET)
-    public Map<String,Object> details() {
-        Map<String,Object> body=new HashMap<>();
-
-        body.put("title", "Welcome to the wordld Spring Boot");
-        body.put("nombre", "Andres");
-        body.put("lastname", "Salazar Pizarro");
-
-        return body;
+    public UserDto details() {
+         User user = new User("Andres", "Salazar Pizarro"); 
+        UserDto userDto=new UserDto();
+               
+        userDto.setUser(user);
+        userDto.setTitle("Welcome to the wordld Spring Boot");
+        return userDto;
     }
 }
