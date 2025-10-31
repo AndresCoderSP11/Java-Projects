@@ -7,12 +7,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.andres.springboot.di.app.demo.models.Product;
+import com.andres.springboot.di.app.demo.repositories.ProductRepository;
 import com.andres.springboot.di.app.demo.repositories.ProductRepositoryImpl;
-import com.andres.springboot.di.app.demo.repositories.ProductoRepository;
+
 
 /* El producto service con el repositroy es una implementacion de una Interface que permite garantizar
  como un contrato de que lo va tener algo ?....
   */
+
+/* La parte de Autwires de la parte de repositroy */
+
+
 
 @Service
 public class ProductServiceImpl  implements ProductService{
@@ -25,10 +30,19 @@ public class ProductServiceImpl  implements ProductService{
     /* Esto desde que se define la parte de Autowired en la parte de cada clase...
      * se lleva a cabo ello y se jala por cada clase sin necesidad de hacer el ProductSerrviceImple()...
      */
-    @Autowired
-    private ProductoRepository repository;
 
+    @Autowired
+    private ProductRepository repository;
+
+
+    /* En esta parte de  */
+   /*  @Autowired
     public void setRepository(ProductoRepository repository) {
+        this.repository = repository;
+    } */
+
+    
+    public ProductServiceImpl(ProductRepository repository) {
         this.repository = repository;
     }
 
@@ -45,6 +59,7 @@ public class ProductServiceImpl  implements ProductService{
         }).collect(Collectors.toList());
 
     }
+
 
     @Override
     public Product findById(Long id){

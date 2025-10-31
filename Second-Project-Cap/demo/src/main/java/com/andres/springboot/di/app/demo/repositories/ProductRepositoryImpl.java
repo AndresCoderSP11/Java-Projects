@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 /* SE esta teniendno como un tipado por parte de productRepositoryu , debidoa que esto es una Interfdase */
 
 @Repository
-public class ProductRepositoryImpl implements ProductoRepository{
+public class ProductRepositoryImpl implements ProductRepository{
 
     private List<Product> data;
 

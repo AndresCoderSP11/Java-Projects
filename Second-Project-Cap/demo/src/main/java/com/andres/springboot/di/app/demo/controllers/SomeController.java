@@ -24,8 +24,19 @@ public class SomeController {
 
     /* En la parte de ProductService... tambien puede ser jalado asi que no hayt problema en ese punto */
 
+
+    /* Esta parte del productService y tambien la parte
+     * Autowired del service .... luego del autowirded cuando el constructor 
+     * no se llevaria a cabo o no seria necesario del Autowired
+     */
     @Autowired
     private ProductService service;
+
+
+    public SomeController(ProductService service) {
+        this.service = service;
+    }
+
     @GetMapping
     public List<Product> list() {
         return service.findAll();
