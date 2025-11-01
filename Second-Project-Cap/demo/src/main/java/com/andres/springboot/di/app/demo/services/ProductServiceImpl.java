@@ -3,6 +3,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -31,18 +32,18 @@ public class ProductServiceImpl  implements ProductService{
      * se lleva a cabo ello y se jala por cada clase sin necesidad de hacer el ProductSerrviceImple()...
      */
 
-    @Autowired
     private ProductRepository repository;
 
 
     /* En esta parte de  */
    /*  @Autowired
+    @Qualifier("productFoo")  //Esto trae la parte del llamado al que swe le hice
     public void setRepository(ProductoRepository repository) {
         this.repository = repository;
     } */
 
-    
-    public ProductServiceImpl(ProductRepository repository) {
+    /* En este caso iniciar la parte de product... por parte de Qualifier */
+    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
         this.repository = repository;
     }
 
