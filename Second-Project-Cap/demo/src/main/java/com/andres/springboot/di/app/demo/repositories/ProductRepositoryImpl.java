@@ -5,11 +5,15 @@ import com.andres.springboot.di.app.demo.models.Product;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.annotation.RequestScope;
+import org.springframework.web.context.annotation.SessionScope;
 
 /* SE esta teniendno como un tipado por parte de productRepositoryu , debidoa que esto es una Interfdase */
-
+@Primary
+@SessionScope   
 @Repository("productList")
 public class ProductRepositoryImpl implements ProductRepository{
 
