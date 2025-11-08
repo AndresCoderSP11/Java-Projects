@@ -3,10 +3,21 @@ package com.andres.curso.springboot.id.factura.springboot_di_factura.models;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.ApplicationScope;
+import org.springframework.web.context.annotation.RequestScope;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
+@ApplicationScope
+@RequestScope
+/* @JsonIgnoreProperties({"targetSource","advisors"}) */
 public class Invoice {
     
     /* Extraccion de la parte de Clase sin necesidad de declarar */
@@ -18,8 +29,26 @@ public class Invoice {
     
     /* Denominacion de la parte de ListItem */
     @Autowired  
+    @Qualifier("default")
     private List<Item> items;
 
+    public Invoice(){
+         System.out.println("Creando el componente de la factura");
+    }
+
+    /* Obtiene todass las infromacion de antes de tu PostCOnstuct */
+    @PostConstruct
+    public void init(){
+        System.out.println("Creando el componente de la factura");
+    }
+
+    @PreDestroy
+    public void destroy(){
+        System.out.println("Despues el componente o bean invoiced!");
+    }
+
+
+  
     public Client getClient() {
         return client;
     }

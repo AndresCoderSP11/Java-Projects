@@ -15,15 +15,14 @@ import com.andres.curso.springboot.id.factura.springboot_di_factura.models.Produ
 @PropertySource("classpath:data.properties")
 public class AppConfig {
     
-    @Bean
+    @Bean("default")
     List<Item> itemInvoice(){
         Product p1=new Product("camara sony",800);
         Product p2=new Product("Video Camera",1200);
         return Arrays.asList(new Item(p1,2),new Item(p2,4));   
     }
 
-     @Bean
-     @Primary
+    @Bean
     List<Item> itemInvoiceOffice(){
         Product p1=new Product("Monitor Sony 24",700);
         Product p2=new Product("Notebook Razer",2200);
