@@ -2,6 +2,7 @@ package com.andres.curso.springboot.error.springboot_error.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -27,16 +28,20 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public User findById(Long id) {
+    public Optional<User>  findById(Long id) {
         User user = null;
         for(User u:users){
+            /* Interaccion de todo el map cuando verifica hace break */
             if(u.getId().equals(id)){
                 user=u;
                 break;
             }
         }
-
-        return null;
+        if(user==null){
+            return Optional.empty();
+        }
+       /*  return user; */
+       return Optional.ofNullable(user);
     }
     
 }
