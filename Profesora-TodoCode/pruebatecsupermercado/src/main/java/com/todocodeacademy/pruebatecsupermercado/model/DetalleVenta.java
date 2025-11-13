@@ -28,4 +28,3 @@ public class DetalleVenta {
     private Double precio;
 
 }
- 
