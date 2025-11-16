@@ -14,7 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Venta {
@@ -25,12 +26,14 @@ public class Venta {
     private LocalDate fecha;
     private String estado;
 
-/* Verificacion de que muchas ventas pueden pertenecer a una Sola sucurssal */
+    /* Verificacion de que muchas ventas pueden pertenecer a una Sola sucurssal */
+    private Double total;
+
     @ManyToOne
     private Sucursal sucursal;
 
     /* Con esto se puede tener en cuenta la parte de que JPA cree todo ello */
-    @OneToMany (mappedBy = "venta")  /* Tiene que se lap arte del mapeo de venta */
-    private List<DetalleVenta> detalle=new ArrayList<>();
-
+    @OneToMany(mappedBy = "venta") /* Tiene que se lap arte del mapeo de venta */
+    private List<DetalleVenta> detalle = new ArrayList<>();
+    
 }

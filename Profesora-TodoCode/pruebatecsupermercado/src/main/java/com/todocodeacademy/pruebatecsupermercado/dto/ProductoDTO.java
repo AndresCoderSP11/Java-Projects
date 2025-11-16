@@ -1,6 +1,7 @@
 package com.todocodeacademy.pruebatecsupermercado.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,10 +10,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ProductoDTO {
     private Long id;
     private String nombre;
     private String categoria;
     private Double precio;
     private int cantidad;
+
 }

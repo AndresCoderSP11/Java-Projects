@@ -1,0 +1,10 @@
+package com.todocodeacademy.pruebatecsupermercado.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/sucursales")
+public class SucursalController {
+    
+}
