@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootErrorApplication<springboot-error>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.andres.curso.springboot.error.springboot_error.SpringbootErrorApplication",
+            "projectName": "springboot-error",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

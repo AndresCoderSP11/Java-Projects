@@ -7,6 +7,6 @@ import com.todocodeacademy.pruebatecsupermercado.dto.VentaDTO;
 public interface IVentaService {
     List<VentaDTO> traerVentas();
     VentaDTO crearVenta(VentaDTO ventaDto);
-    VentaDTO aztualizarVenta(Long id, VentaDTO ventaDto);
+    VentaDTO actualizarVenta(Long id, VentaDTO ventaDto);
     void eliminarVenta(Long id);
 }

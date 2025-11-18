@@ -25,6 +25,7 @@ public class Mapper {
             .nombre(p.getNombre())
             .categoria(p.getCategoria())
             .precio(p.getPrecio())
+            .cantidad(p.getCantidad())
             .build();
     }
 

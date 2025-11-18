@@ -74,6 +74,9 @@ public class VentaService implements IVentaService {
 
         List<DetalleVenta> detalles = new ArrayList<>();
 
+        Double totalPresupuesto=0.0;
+
+
         for (DetalleVentaDTO detDTO : ventaDto.getDetalle()) {
             // Buscar product por id (tu detTO usa id como id de producto)
             Producto p = productoRepo.findByNombre(detDTO.getNombreProd()).orElse(null);
@@ -88,11 +91,14 @@ public class VentaService implements IVentaService {
             detalleVent.setVenta(vent);
             // Agregar la aprte de Arreglo
             detalles.add(detalleVent);
+
+            totalPresupuesto=totalPresupuesto+detDTO.getPrecio()*detDTO.getCantProd();
         }
 
         vent.setDetalle(detalles);
+        vent.setTotal(totalPresupuesto);
 
-        ventaRepo.save(vent);
+        vent=ventaRepo.save(vent);
 
         VentaDTO ventaSalida = Mapper.toDTO(vent);
 
@@ -103,7 +109,7 @@ public class VentaService implements IVentaService {
     }
 
     @Override
-    public VentaDTO aztualizarVenta(Long id, VentaDTO ventaDto) {
+    public VentaDTO actualizarVenta(Long id, VentaDTO ventaDto) {
         Venta v = ventaRepo.findById(id).orElse(null);
         if (v == null) {
             throw new RuntimeException("Venta no encontradaq");
