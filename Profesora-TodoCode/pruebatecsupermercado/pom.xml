@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.todocodeacademy</groupId>
 	<artifactId>pruebatecsupermercado</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>pruebatecsupermercado</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -42,6 +42,7 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
+            <version>8.0.33</version>
 			<scope>runtime</scope>
 		</dependency>
 

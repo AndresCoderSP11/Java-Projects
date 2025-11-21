@@ -17,7 +17,10 @@ public class MvcConfig implements WebMvcConfigurer{
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         // TODO Auto-generated method stub
-        registry.addInterceptor(timeInterceptor);
+        /* registry.addInterceptor(timeInterceptor).addPathPatterns("/app/bar","/app/foo"); */
+
+        
+        registry.addInterceptor(timeInterceptor).excludePathPatterns("/app/bar","/app/foo");
     }
     
     
