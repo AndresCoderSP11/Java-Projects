@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "name": "SD DEVELOPER 100",
+        "price": 100
+    },
+    {
+        "id": 2,
+        "name": " WII 200",
+        "price": 200
+    },
+    {
+        "id": 3,
+        "name": " NINTENDO 300",
+        "price": 300
+    },
+    {
+        "id": 4,
+        "name": "Placa Placa 400 ",
+        "price": 825
+    }
+]

@@ -12,8 +12,8 @@ import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.context.annotation.SessionScope;
 
 /* SE esta teniendno como un tipado por parte de productRepositoryu , debidoa que esto es una Interfdase */
-@Primary
-@SessionScope   
+/* @Primary */
+/* @RequestScope */   
 @Repository("productList")
 public class ProductRepositoryImpl implements ProductRepository{
 

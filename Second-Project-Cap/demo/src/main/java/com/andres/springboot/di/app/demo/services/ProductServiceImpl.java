@@ -4,6 +4,8 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.couchbase.CouchbaseProperties.Env;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +25,9 @@ import com.andres.springboot.di.app.demo.repositories.ProductRepositoryImpl;
 @Service
 public class ProductServiceImpl  implements ProductService{
     
+    @Autowired
+    private Environment environment;
+
     /* En la p[arte de l service se hace el cambio o la obtencion de los datos pero tu lo tienes
      * que mover o editar , en el repository ss lo qeu se obtiene de la base de datos 
     ] */
@@ -43,15 +48,16 @@ public class ProductServiceImpl  implements ProductService{
     } */
 
     /* En este caso iniciar la parte de product... por parte de Qualifier */
-    public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
-        this.repository = repository;
-    }
+    
+        /* public ProductServiceImpl(@Qualifier("productList") ProductRepository repository) {
+            this.repository = repository;
+        } */
 
     @Override
     public List<Product> findAll(){
         
         return repository.findAll().stream().map(p->{
-            Double priceTax=p.getPrice() *1.25d;
+            Double priceTax=p.getPrice() * environment.getProperty("config.price.tax",Double.class);
             /* Product product=new Product(p.getId(),p.getName(),priceImp.longValue()); */
             /* p.setPrice(priceImp.longValue()); */
        /*      Product newProd=(Product) p.clone();
@@ -63,6 +69,8 @@ public class ProductServiceImpl  implements ProductService{
             Product newProd=(Product) p.clone();
             newProd.setPrice(priceTax.longValue());
             return newProd;
+
+
 
         }).collect(Collectors.toList());
 
