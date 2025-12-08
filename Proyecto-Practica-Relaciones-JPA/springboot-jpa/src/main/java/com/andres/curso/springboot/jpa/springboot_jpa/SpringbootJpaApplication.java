@@ -40,7 +40,8 @@ public class SpringbootJpaApplication implements CommandLineRunner{
 		invoice.setCliente(client);
 		invoice.setDescription("Compras del Total");
 		invoice.setTotal(2000L);
-		invoiceRepository.save(invoice);
+		Invoice invoiceDB=invoiceRepository.save(invoice);
+		System.out.println(invoiceDB);
 
 
 	}
